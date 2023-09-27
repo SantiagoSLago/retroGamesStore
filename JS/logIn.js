@@ -104,7 +104,7 @@ function logIn() {
 
     if (dataUserComparision(data, user)) {
         alert("Log In Succesfull")
-        window.location.href = "/index.html"
+        window.location.href = "https://santiagoslago.github.io/retroGamesStore/index.html"
     }
 
 }
