@@ -88,7 +88,7 @@ function saveUserinStorage(createUser) {
     if (user != null) {
         localStorage.setItem("user", stringedUser);
         alert("Usuario guardado con exito")
-        window.location.href = "/index.html"
+        window.location.href = "https://santiagoslago.github.io/retroGamesStore/index.html"
     }
 }
 
