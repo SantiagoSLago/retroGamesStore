@@ -1,0 +1,30 @@
+@import './scss/utilities/colourPallete.scss';
+@import './scss/utilities/fonts.scss';
+
+
+@mixin gameCardButton{
+    background-color: nth($colors,5 );
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    color: nth($colors,4);
+}
+
+
+@mixin shoppingItemButon{
+    width: 20px;
+    height: 20px;
+    background-color: nth($colors,5);
+    color: nth($colors,4);
+    border:none;
+    border-radius: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin btnOffcanvasBuy {
+    @include gameCardButton;
+}

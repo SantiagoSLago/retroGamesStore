@@ -1,0 +1,82 @@
+@import "./scss/utilities/colourPallete.scss";
+@import "./scss/components/secondaryComponents/welcomeBanner.scss";
+@import "./scss/components/secondaryComponents/gameCard.scss";
+@import "./scss/components/secondaryComponents/forms.scss";
+@import './scss/components/mainComponents/header.scss';
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+/////////////////Index Layout////////////////
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+
+body {
+  background-color: nth($colors, 1);
+}
+
+header{
+  @include header;
+}
+
+main {
+  
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  .banner-section {
+    @include welcomeBanner;
+  }
+  .cards-section {
+    @include gameCard;
+    flex-wrap: wrap;
+  }
+}
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+/////////////////LogIn Layout////////////////
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+
+.forms-section {
+  display: flex;
+  justify-content: space-evenly;
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: nth($colors, 3);
+    border-radius: 15px;
+    border:1px solid black;
+
+
+    width: 300px;
+    height: 450px;
+    text-align: center;
+
+    .form-title-container{
+        background-color:nth($colors, 2 );
+        height: 85px;
+        width:268px;
+
+        border:1px solid black;
+        border-radius: 15px;
+
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h4{
+            font-family: nth($fonts,1 );
+            color: nth($colors, 4)
+        }
+
+    }
+    .form {
+      @include generalForm;
+    }
+  }
+}

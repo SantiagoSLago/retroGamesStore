@@ -1,0 +1,46 @@
+@import "./scss/utilities/colourPallete.scss";
+@import "./scss/utilities/fonts.scss";
+
+
+@mixin welcomeBanner{
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  .welcome-banner-container {
+    background-color: nth($colors, 3);
+    height: 265px;
+    width: 92%;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .welcome-banner {
+      height: 95%;
+      width: 99%;
+      background-color: nth($colors, 2);
+      border: 1px solid black;
+      border-radius: 10px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+
+      h1 {
+        color: nth($colors, 4);
+        margin: 0%;
+        font-family: nth($fonts, 1);
+      }
+
+      h2 {
+        color: nth($colors, 4);
+        font-family: nth($fonts, 1);
+      }
+    }
+  }
+}
+
+
