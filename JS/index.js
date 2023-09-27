@@ -85,9 +85,9 @@ function addItemToCart(event) {
     for (const game of videogames) {
         if (game.name === videogameName) {
             user.shoppingCart.products.push(game)
+            drawCartItems(user.shoppingCart.products)
         }
     }
-    drawCartItems(user.shoppingCart.products)
 }
 
 
