@@ -1,43 +1,58 @@
 body {
   background-color: #4CB5E2; }
 
-header .header-icon-container {
-  border: 1px solid blacK;
-  width: 80px;
-  margin-left: 60px;
-  margin-top: 20px;
+header {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center; }
-  header .header-icon-container .btn-shopping-items {
-    width: 20px;
-    height: 20px;
-    background-color: #8F0000;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 100px;
+  justify-content: space-between; }
+  header .cart-icon, header .home-icon {
+    font-size: 30px;
+    cursor: pointer; }
+  header .profile-icon {
+    margin-right: 20px;
+    margin-top: 15px;
+    font-size: 30px;
+    cursor: pointer; }
+  header .home-icon {
+    margin-left: 20px; }
+  header .header-icon-container {
+    width: 80px;
+    margin-left: 60px;
+    margin-top: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center; }
+    header .header-icon-container .btn-shopping-items {
+      width: 20px;
+      height: 20px;
+      background-color: #8F0000;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+  header .btn-offcanvas-buy {
+    background-color: #8F0000;
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    color: #FFFFFF; }
 
-header .btn-offcanvas-buy {
-  background-color: #8F0000;
-  width: 100px;
-  height: 40px;
-  border: none;
-  border-radius: 25px;
-  color: #FFFFFF; }
+a {
+  color: inherit;
+  text-decoration: none; }
 
-main {
+main, .purchase-page-main, .profile-page-main {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly; }
-  main .banner-section {
+  main .banner-section, .purchase-page-main .banner-section, .profile-page-main .banner-section {
     width: 100%;
     display: flex;
     justify-content: center; }
-    main .banner-section .welcome-banner-container {
+    main .banner-section .welcome-banner-container, .purchase-page-main .banner-section .welcome-banner-container, .profile-page-main .banner-section .welcome-banner-container {
       background-color: #949292;
       height: 265px;
       width: 92%;
@@ -46,7 +61,7 @@ main {
       display: flex;
       justify-content: center;
       align-items: center; }
-      main .banner-section .welcome-banner-container .welcome-banner {
+      main .banner-section .welcome-banner-container .welcome-banner, .purchase-page-main .banner-section .welcome-banner-container .welcome-banner, .profile-page-main .banner-section .welcome-banner-container .welcome-banner {
         height: 95%;
         width: 99%;
         background-color: #14CB1C;
@@ -56,18 +71,24 @@ main {
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center; }
-        main .banner-section .welcome-banner-container .welcome-banner h1 {
+        main .banner-section .welcome-banner-container .welcome-banner h1, .purchase-page-main .banner-section .welcome-banner-container .welcome-banner h1, .profile-page-main .banner-section .welcome-banner-container .welcome-banner h1 {
           color: #FFFFFF;
           margin: 0%;
           font-family: "Press Start 2P"; }
-        main .banner-section .welcome-banner-container .welcome-banner h2 {
+        main .banner-section .welcome-banner-container .welcome-banner h2, .purchase-page-main .banner-section .welcome-banner-container .welcome-banner h2, .profile-page-main .banner-section .welcome-banner-container .welcome-banner h2 {
           color: #FFFFFF;
           font-family: "Press Start 2P"; }
-  main .cards-section {
+        main .banner-section .welcome-banner-container .welcome-banner li, .purchase-page-main .banner-section .welcome-banner-container .welcome-banner li, .profile-page-main .banner-section .welcome-banner-container .welcome-banner li, main .banner-section .welcome-banner-container .welcome-banner p, .purchase-page-main .banner-section .welcome-banner-container .welcome-banner p, .profile-page-main .banner-section .welcome-banner-container .welcome-banner p {
+          color: #FFFFFF;
+          margin: 0%;
+          font-family: "Press Start 2P"; }
+    main .banner-section .hidden, .purchase-page-main .banner-section .hidden, .profile-page-main .banner-section .hidden {
+      visibility: hidden; }
+  main .cards-section, .purchase-page-main .cards-section, .profile-page-main .cards-section {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap; }
-    main .cards-section .card-container {
+    main .cards-section .card-container, .purchase-page-main .cards-section .card-container, .profile-page-main .cards-section .card-container {
       border: 1px solid black;
       border-radius: 10px;
       width: 440px;
@@ -76,19 +97,19 @@ main {
       display: flex;
       justify-content: space-evenly;
       align-items: center; }
-      main .cards-section .card-container .joystick-container {
+      main .cards-section .card-container .joystick-container, .purchase-page-main .cards-section .card-container .joystick-container, .profile-page-main .cards-section .card-container .joystick-container {
         margin-bottom: 8px; }
-        main .cards-section .card-container .joystick-container img {
+        main .cards-section .card-container .joystick-container img, .purchase-page-main .cards-section .card-container .joystick-container img, .profile-page-main .cards-section .card-container .joystick-container img {
           margin-bottom: 5px; }
-        main .cards-section .card-container .joystick-container p {
+        main .cards-section .card-container .joystick-container p, .purchase-page-main .cards-section .card-container .joystick-container p, .profile-page-main .cards-section .card-container .joystick-container p {
           color: #FFFFFF; }
-      main .cards-section .card-container .display-container {
+      main .cards-section .card-container .display-container, .purchase-page-main .cards-section .card-container .display-container, .profile-page-main .cards-section .card-container .display-container {
         width: 70%;
         height: 90%;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly; }
-        main .cards-section .card-container .display-container .screen-container {
+        main .cards-section .card-container .display-container .screen-container, .purchase-page-main .cards-section .card-container .display-container .screen-container, .profile-page-main .cards-section .card-container .display-container .screen-container {
           background-color: #14CB1C;
           border: 1px solid black;
           border-radius: 10px;
@@ -96,14 +117,14 @@ main {
           display: flex;
           justify-content: center;
           align-items: center; }
-          main .cards-section .card-container .display-container .screen-container h4 {
+          main .cards-section .card-container .display-container .screen-container h4, .purchase-page-main .cards-section .card-container .display-container .screen-container h4, .profile-page-main .cards-section .card-container .display-container .screen-container h4 {
             font-family: "Press Start 2P";
             color: #FFFFFF; }
-      main .cards-section .card-container .button-container {
+      main .cards-section .card-container .button-container, .purchase-page-main .cards-section .card-container .button-container, .profile-page-main .cards-section .card-container .button-container {
         display: flex;
         justify-content: space-around;
         margin-top: 5px; }
-        main .cards-section .card-container .button-container .btn-gameCard {
+        main .cards-section .card-container .button-container .btn-gameCard, .purchase-page-main .cards-section .card-container .button-container .btn-gameCard, .profile-page-main .cards-section .card-container .button-container .btn-gameCard {
           background-color: #8F0000;
           width: 100px;
           height: 40px;
@@ -157,3 +178,118 @@ main {
         border: none;
         border-radius: 25px;
         color: #FFFFFF; }
+
+.purchase-page-main .purchase-card, .profile-page-main .purchase-card {
+  background-color: #949292;
+  border-radius: 10px;
+  border: 1px solid black;
+  width: 465px;
+  height: 455px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; }
+  .purchase-page-main .purchase-card .purchase-card-title, .profile-page-main .purchase-card .purchase-card-title, .purchase-page-main .purchase-card .purchase-card-body, .profile-page-main .purchase-card .purchase-card-body {
+    background-color: #14CB1C;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 412px;
+    height: 61px;
+    font-family: "Press Start 2P";
+    color: #FFFFFF;
+    text-align: center; }
+  .purchase-page-main .purchase-card .purchase-card-body, .profile-page-main .purchase-card .purchase-card-body {
+    height: 234px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; }
+    .purchase-page-main .purchase-card .purchase-card-body ol, .profile-page-main .purchase-card .purchase-card-body ol {
+      margin-left: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 80%; }
+    .purchase-page-main .purchase-card .purchase-card-body form, .profile-page-main .purchase-card .purchase-card-body form {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly; }
+  .purchase-page-main .purchase-card .purchase-card-button-container, .profile-page-main .purchase-card .purchase-card-button-container {
+    border-radius: 10px;
+    width: 412px;
+    height: 60px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+    .purchase-page-main .purchase-card .purchase-card-button-container .btn-purchase, .profile-page-main .purchase-card .purchase-card-button-container .btn-purchase {
+      background-color: #8F0000;
+      width: 100px;
+      height: 40px;
+      border: none;
+      border-radius: 25px;
+      color: #FFFFFF;
+      font-family: "Press Start 2P"; }
+    .purchase-page-main .purchase-card .purchase-card-button-container .btn-discount, .profile-page-main .purchase-card .purchase-card-button-container .btn-discount {
+      width: 280px; }
+
+.profile-page-main {
+  justify-content: end; }
+
+.profile-banner {
+  width: 100%;
+  display: flex;
+  justify-content: center; }
+  .profile-banner .welcome-banner-container {
+    background-color: #949292;
+    height: 150px;
+    width: 92%;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .profile-banner .welcome-banner-container .welcome-banner {
+      height: 95%;
+      width: 99%;
+      background-color: #14CB1C;
+      border: 1px solid black;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center; }
+      .profile-banner .welcome-banner-container .welcome-banner h1 {
+        color: #FFFFFF;
+        margin: 0%;
+        font-family: "Press Start 2P"; }
+      .profile-banner .welcome-banner-container .welcome-banner h2 {
+        color: #FFFFFF;
+        font-family: "Press Start 2P"; }
+      .profile-banner .welcome-banner-container .welcome-banner li, .profile-banner .welcome-banner-container .welcome-banner p {
+        color: #FFFFFF;
+        margin: 0%;
+        font-family: "Press Start 2P"; }
+  .profile-banner .hidden {
+    visibility: hidden; }
+
+.profile-data-cards {
+  height: 90vh;
+  align-items: center; }
+  .profile-data-cards .purchase-card {
+    height: 90%; }
+    .profile-data-cards .purchase-card .purchase-card-body {
+      height: auto; }
+      .profile-data-cards .purchase-card .purchase-card-body .user-data {
+        font-family: 'Courier New', Courier, monospace; }
+    .profile-data-cards .purchase-card .user-purchases {
+      align-items: flex-start;
+      font-family: 'Courier New', Courier, monospace; }
+      .profile-data-cards .purchase-card .user-purchases hr {
+        height: 3px;
+        width: 100%;
+        background-color: white; }
+      .profile-data-cards .purchase-card .user-purchases p {
+        margin-left: 5px;
+        text-align: start; }

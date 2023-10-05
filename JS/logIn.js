@@ -17,10 +17,12 @@ class ShoppingCart {
 
     constructor() {
         this.products =[],
-        this.amount =0;
+        this.amount =0,
+        this.discount ={};
     }
 
 }
+
 
 
 
@@ -31,9 +33,11 @@ class User {
         this.email = email;
         this.password = password;
         this.score = 0,
-        this.shoppingCart = new ShoppingCart();
+        this.shoppingCart = new ShoppingCart(),
+        this.purchases = [];
     }
 }
+
 
 let user;
 
@@ -153,7 +157,6 @@ btnLogIn.addEventListener("click", (e) => {
     e.preventDefault()
     logIn()
 })
-
 
 
 

@@ -1,0 +1,115 @@
+@import "./scss/utilities/colourPallete.scss";
+@import "./scss/utilities/fonts.scss";
+@import "./scss/components/secondaryComponents/buttons.scss";
+
+@mixin purchaseCard {
+  background-color: nth($colors, 3);
+  border-radius: 10px;
+  border: 1px solid black;
+
+  width: 465px;
+  height: 455px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  .purchase-card-title {
+    background-color: nth($colors, 2);
+    border-radius: 10px;
+    border: 1px solid black;
+
+    width: 412px;
+    height: 61px;
+
+    font-family: nth($fonts, 1);
+    color: nth($colors, 4);
+    text-align: center;
+  }
+
+  .purchase-card-body {
+    @extend .purchase-card-title;
+    height: 234px;
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    ol {
+      margin-left: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      height: 80%;
+    }
+
+    form {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+  }
+
+  .purchase-card-button-container {
+    border-radius: 10px;
+
+    width: 412px;
+    height: 60px;
+
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .btn-purchase {
+      @include gameCardButton;
+      font-family: nth($fonts, 1);
+    }
+
+    .btn-discount {
+      width: 280px;
+    }
+  }
+}
+
+@mixin profileDataCards {
+  height: 90vh;
+  align-items: center;
+
+  .purchase-card {
+    height: 90%;
+    .purchase-card-body {
+      height: auto;
+
+      .user-data{
+        font-family:'Courier New', Courier, monospace;
+      }
+      
+    }
+
+    .user-purchases{
+      align-items: flex-start;
+      font-family:'Courier New', Courier, monospace;
+      
+      hr{
+        height: 3px;
+        width: 100%;
+        background-color: white;
+
+      }
+
+      p{
+        margin-left: 5px;
+        text-align: start;
+      }
+    }
+
+    
+  }
+
+ 
+}

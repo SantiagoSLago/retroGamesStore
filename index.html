@@ -20,11 +20,11 @@
 
 <body>
     <header>
-
         <div class="header-icon-container">
-            <i class="fa-solid fa-cart-shopping" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+            <i class="fa-solid fa-cart-shopping cart-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                 aria-controls="offcanvasRight"></i> <button class="btn-shopping-items">0</button>
         </div>
+        <a href="/templates/userProfile.html"><i class="fa-solid fa-user profile-icon"></i></a>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
                 <h5 id="offcanvasRightLabel">Shopping Cart</h5>
@@ -35,7 +35,9 @@
                <ol class="item-list"> 
 
                </ol>
-
+               <div class="shopping-cart-amount-container">
+                    
+               </div>
                <button class="btn-offcanvas-buy">Buy</button>
             </div>
 
@@ -79,6 +81,36 @@
                 <div class="display-container">
                     <div class="screen-container">
                         <h4>Super Mario</h4>
+                    </div>
+                    <div class="button-container">
+                        <button class="btn-gameCard btn-buy">Add to Cart</button>
+                        <button class="btn-gameCard">Demo</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="joystick-container">
+                    <img src="img/joystick.png" alt="">
+                    <p>Score Text</p>
+                </div>
+                <div class="display-container">
+                    <div class="screen-container">
+                        <h4>MineSeeker</h4>
+                    </div>
+                    <div class="button-container">
+                        <button class="btn-gameCard btn-buy">Add to Cart</button>
+                        <button class="btn-gameCard">Demo</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="joystick-container">
+                    <img src="img/joystick.png" alt="">
+                    <p>Score Text</p>
+                </div>
+                <div class="display-container">
+                    <div class="screen-container">
+                        <h4>Space Invaders</h4>
                     </div>
                     <div class="button-container">
                         <button class="btn-gameCard btn-buy">Add to Cart</button>

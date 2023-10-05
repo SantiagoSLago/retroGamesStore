@@ -2,8 +2,29 @@
 @import "./scss/components/secondaryComponents/buttons.scss";
 
 @mixin header {
+
+display: flex;
+justify-content: space-between;
+
+.cart-icon{
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.profile-icon{
+  margin-right: 20px;
+  margin-top: 15px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.home-icon{
+  @extend .cart-icon;
+  margin-left: 20px;
+}
+
   .header-icon-container {
-    border: 1px solid blacK;
+  
     width: 80px;
     margin-left: 60px;
     margin-top: 20px;
