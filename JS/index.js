@@ -214,7 +214,8 @@ buyBtns.forEach(btn => {
 
 buyButton.addEventListener('click', (e) => {
     e.preventDefault();
-    "https://santiagoslago.github.io/retroGamesStore/templates/purchase.html";
+    window.location.href:"https://santiagoslago.github.io/retroGamesStore/templates/purchase.html";
+    
 })
 
 
