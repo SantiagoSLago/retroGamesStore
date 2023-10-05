@@ -128,7 +128,7 @@ function checkLoguedUser() {
     } else {
         alert("Please Log In or Sign In to buy")
         setTimeout(() => {
-            window.location.href = "/templates/logIn.html";
+            window.location.href = "https://santiagoslago.github.io/retroGamesStore/templates/logIn.html";
         }, 2);
     }
 }
