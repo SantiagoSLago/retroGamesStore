@@ -222,12 +222,12 @@ function decreaseCartAmount(product) {//--> Disminuye el valor/monto del carrito
 }
 
 function logOut() {//--> Funcion de logout (por ahora solo redirecciona al log in)
-    window.location.href = "/templates/logIn.html"
+    window.location.href = "../templates/logIn.html"
 }
 
 function redirectToGameDemo(event){
     if(event.target.value === "Snake"){
-        window.location.href = "/templates/snakeGame.html"
+        window.location.href = "../templates/snakeGame.html"
     }
 }
 
