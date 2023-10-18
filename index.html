@@ -14,6 +14,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Assistant:wght@600&family=Press+Start+2P&family=Roboto:wght@300&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
     <link rel="stylesheet" href="css/styles.css">
     <title>Index</title>
 </head>
@@ -23,8 +26,9 @@
         <div class="header-icon-container">
             <i class="fa-solid fa-cart-shopping cart-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                 aria-controls="offcanvasRight"></i> <button class="btn-shopping-items">0</button>
+            <a href="/templates/userProfile.html"><i class="fa-solid fa-user profile-icon"></i></a>
         </div>
-        <a href="/templates/userProfile.html"><i class="fa-solid fa-user profile-icon"></i></a>
+        <button class="btn-offcanvas-buy btn-logout">Log Out</button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
                 <h5 id="offcanvasRightLabel">Shopping Cart</h5>
@@ -32,20 +36,20 @@
                     aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-               <ol class="item-list"> 
+                <ol class="item-list">
 
-               </ol>
-               <div class="shopping-cart-amount-container">
-                    
-               </div>
-               <button class="btn-offcanvas-buy">Buy</button>
+                </ol>
+                <div class="shopping-cart-amount-container">
+
+                </div>
+                <button class="btn-offcanvas-buy btn-purchase">Buy</button>
             </div>
 
-            
+
         </div>
     </header>
     <main>
-        <section class="main-section index-main-section banner-section">
+        <section class="main-section index-main-section banner-section animate__animated animate__zoomInUp">
             <div class="welcome-banner-container">
                 <div class="welcome-banner">
                     <h2>
@@ -57,67 +61,8 @@
                 </div>
             </div>
         </section>
-        <section class="main-section index-main-section cards-section">
-            <div class="card-container">
-                <div class="joystick-container">
-                    <img src="img/joystick.png" alt="">
-                    <p>Score Text</p>
-                </div>
-                <div class="display-container">
-                    <div class="screen-container">
-                        <h4>Snake</h4>
-                    </div>
-                    <div class="button-container">
-                        <button class="btn-gameCard btn-buy">Add to Cart</button>
-                        <button class="btn-gameCard">Demo</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="joystick-container">
-                    <img src="img/joystick.png" alt="">
-                    <p>Score Text</p>
-                </div>
-                <div class="display-container">
-                    <div class="screen-container">
-                        <h4>Super Mario</h4>
-                    </div>
-                    <div class="button-container">
-                        <button class="btn-gameCard btn-buy">Add to Cart</button>
-                        <button class="btn-gameCard">Demo</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="joystick-container">
-                    <img src="img/joystick.png" alt="">
-                    <p>Score Text</p>
-                </div>
-                <div class="display-container">
-                    <div class="screen-container">
-                        <h4>MineSeeker</h4>
-                    </div>
-                    <div class="button-container">
-                        <button class="btn-gameCard btn-buy">Add to Cart</button>
-                        <button class="btn-gameCard">Demo</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="joystick-container">
-                    <img src="img/joystick.png" alt="">
-                    <p>Score Text</p>
-                </div>
-                <div class="display-container">
-                    <div class="screen-container">
-                        <h4>Space Invaders</h4>
-                    </div>
-                    <div class="button-container">
-                        <button class="btn-gameCard btn-buy">Add to Cart</button>
-                        <button class="btn-gameCard">Demo</button>
-                    </div>
-                </div>
-            </div>
+        <section class="main-section index-main-section cards-section animate__animated animate__bounceInDown">
+            
         </section>
     </main>
     <footer>
@@ -131,6 +76,8 @@
         crossorigin="anonymous"></script>
     <!-- <script src="JS/index.js"></script> -->
     <script src="JS/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 
 </html>

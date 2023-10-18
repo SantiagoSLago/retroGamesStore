@@ -1,6 +1,7 @@
 @import "./scss/utilities/colourPallete.scss";
 @import "./scss/utilities/fonts.scss";
 @import "./scss/components/secondaryComponents/buttons.scss";
+@import "./scss/utilities/animations";
 
 @mixin purchaseCard {
   background-color: nth($colors, 3);
@@ -9,6 +10,7 @@
 
   width: 465px;
   height: 455px;
+  margin-top: 10px;
 
   display: flex;
   flex-direction: column;
@@ -20,7 +22,7 @@
     border-radius: 10px;
     border: 1px solid black;
 
-    width: 412px;
+    width: 90%;
     height: 61px;
 
     font-family: nth($fonts, 1);
@@ -57,7 +59,7 @@
   .purchase-card-button-container {
     border-radius: 10px;
 
-    width: 412px;
+    width: 90%;
     height: 60px;
 
     text-align: center;
@@ -69,6 +71,8 @@
       @include gameCardButton;
       font-family: nth($fonts, 1);
     }
+    @include hover-grow-small('.buy-btn');
+   
 
     .btn-discount {
       width: 280px;
@@ -82,34 +86,90 @@
 
   .purchase-card {
     height: 90%;
+    justify-content: flex-start;
+
+    .purchase-card-title {
+      width: 90%;
+      margin-top: 15px;
+    }
     .purchase-card-body {
       height: auto;
+      margin-top: 20px;
+      height: 80%;
 
-      .user-data{
-        font-family:'Courier New', Courier, monospace;
+      .user-data {
+        font-family: "Courier New", Courier, monospace;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: center;
+        width: 80%;
+
+        button {
+          align-self: center;
+          @include gameCardButton;
+        }
+        @include hover-grow-small(".btn-update-profile");
       }
-      
+
+      .edit-user-data {
+        height: 150px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-self: center;
+
+        .update-form {
+          align-self: center;
+          align-items: flex-start;
+          button {
+            align-self: center;
+            margin-top: 10px;
+            @include gameCardButton;
+          }
+          @include hover-grow-small(".btn-save-profile");
+
+          input {
+            background-color: transparent;
+            border: none;
+            color: white;
+          }
+          label {
+            font-family: "Courier New", Courier, monospace;
+            text-decoration: underline;
+            color: black;
+          }
+
+          input::placeholder {
+            font-family: "Courier New", Courier, monospace;
+            color: white;
+          }
+        }
+      }
+
+      .hidden {
+        visibility: hidden;
+      }
     }
 
-    .user-purchases{
+    .user-purchases {
       align-items: flex-start;
-      font-family:'Courier New', Courier, monospace;
-      
-      hr{
+      font-family: "Courier New", Courier, monospace;
+      overflow-y: scroll;
+      ul {
+        text-align: initial;
+      }
+
+      hr {
         height: 3px;
         width: 100%;
         background-color: white;
-
       }
-
-      p{
+      p {
         margin-left: 5px;
         text-align: start;
       }
     }
-
-    
   }
-
- 
 }

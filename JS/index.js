@@ -14,14 +14,13 @@ class VideoGame {
 }
 
 
-
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 ///////////////// Constants /////////////////
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 
-let buyBtns = document.querySelectorAll('.btn-buy');
+
 let welcomeBanner = document.querySelector('.welcome-banner');
 let gameCardsSection = document.querySelector('.cards-section')
 let shopItems = document.querySelector('.btn-shopping-items');
@@ -29,26 +28,13 @@ let products = shoppingCartProducts(JSON.parse(localStorage.getItem("user")))
 let user = JSON.parse(localStorage.getItem("user"));
 let canvasBody = document.querySelector('.item-list');
 let cartAmount = document.querySelector('.shopping-cart-amount-container');
-let buyButton = document.querySelector('.btn-offcanvas-buy');
+let buyButton = document.querySelector('.btn-purchase');
+let logoutButton = document.querySelector('.btn-logout');
 let deleteIcons;
 
+// Videogames//
 
 
-
-
-const snakeVideogame = new VideoGame("Snake", 2300);
-const superMarioVideogame = new VideoGame("Super Mario", 1200);
-const minesSeekerVideogame = new VideoGame("MineSeeker", 1150);
-const spaceInvadersVideogame = new VideoGame("Space Invaders", 1300);
-let videogames = [snakeVideogame, superMarioVideogame, minesSeekerVideogame, spaceInvadersVideogame];
-
-
-if(user != null){
-
-    console.log(user.purchases)
-}
-
-console.log(user)
 
 
 
@@ -60,50 +46,45 @@ console.log(user)
 
 
 
-///Data Extraction Functions
+// Funciones de extraccion de data //
 
-function shoppingCartProducts(user) {
-    if (user != null) {
-        let products = user.shoppingCart.products
-        return products;
-    }
+function shoppingCartProducts(user) {//--> Extrae todos los productos del carrito del usuario
+    return user != null ? user.shoppingCart.products : null;
 }
 
-function shoppingCartAmount(user) {
-    if (user != null) {
-        let amount = user.shoppingCart.amount
-        return amount;
-    }
+function shoppingCartAmount(user) {//--> Extrae el monto del carrito del usuario
+    return user != null ? user.shoppingCart.amount : null;
 }
 
-///HTML drawing Functions
+// Funciones de extraccion de data asincronicas //
 
-
-
-function drawUsernameInBanner() {
-    if (user != null) {
-        welcomeBanner.innerHTML += `<h2>${user.username}</h2>`
-    }
+async function getAllVIdeogames(vGamesUrl) {//--> Retorna un Json con todos los videojuegos de la BD
+    let items = await fetch(vGamesUrl);
+    return await items.json();
 }
 
-function drawItemsNumber(number) {
-        shopItems.innerText = `${number}`
+// Funciones de dibujo de HTML //
+
+function drawUsernameInBanner(user) {//--> Dibuja el numbre del usuario en el banner principal
+    user != null ? welcomeBanner.innerHTML += `<h2>${user.username}</h2>` : null;
 }
 
-function drawCartItems(user) {
+function drawItemsNumber(number) {//--> Dibuja el numero de items del carrito en la esquina superior derecha
+    shopItems.innerText = `${number}`
+}
+
+
+function drawCartItems(user) {//--> Dibuja los items del carrito en el banner lateral
+
 
     if (user != null) {
         let products = shoppingCartProducts(user)
         canvasBody.innerHTML = '';
-
-
-
         products.forEach(product => {
             const listItem = document.createElement('li');
             listItem.innerHTML = `<i class="fa-solid fa-circle-minus delete-icon" value="${product.name}">${product.name}</i>`;
             canvasBody.appendChild(listItem);
         });
-
         deleteIcons = document.querySelectorAll('.delete-icon');
         deleteIcons.forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -116,33 +97,83 @@ function drawCartItems(user) {
 
 }
 
-function drawCartAmount(amount) {
+function drawCartAmount(amount) {//--> Dibuja el monto del carrito del usuario
     cartAmount.innerHTML = '';
     cartAmount.innerHTML += `<p>$ ${amount}</p>`
 }
 
+//Async drawing functions Functions
+
+/* 1- Consulta asincronica a la BD de videojuegos
+   2- Dibuja las tarjetas de cada videojuego
+   3- Asigna a cada boton de compra de la tarjeta el valor del nombre del videojuego
+   */
+async function drawGameCards(vGamesUrl) {
+    let vGames = await getAllVIdeogames(vGamesUrl);
+    vGames.forEach(game => {
+        gameCardsSection.innerHTML += `
+        <div class="card-container">
+        <div class="joystick-container">
+            <img src="img/joystick.png" alt="">
+            <p>Price: $${game.price}</p>
+        </div>
+        <div class="display-container">
+            <div class="screen-container">
+                <h4>${game.name}</h4>
+            </div>
+            <div class="button-container">
+                <button class="btn-gameCard btn-buy" value="${game.name}">Add to Cart</button>
+                <button class="btn-gameCard btn-demo" value="${game.name}">Demo</button>
+            </div>
+        </div>
+    </div>
+        `
+    });
+
+
+    //Add Items to cart
+    let buyBtns = document.querySelectorAll('.btn-buy');
+    buyBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            checkLoguedUser()
+            addItemToCart(e, vGames)
+        })
+    });
+
+    let demoBtns = document.querySelectorAll('.btn-demo')
+    demoBtns.forEach(btn => {
+        btn.addEventListener('click',(e)=>{
+            if(checkLoguedUser()){
+                redirectToGameDemo(e)
+            }
+            
+            
+        })
+    });
+
+
+}
+
 //Business Logic Functions
 
-function checkLoguedUser() {
+function checkLoguedUser() {//--> Chequea si el usuario esta logueado o no
     if (localStorage.getItem("user") != null) {
+        return true;
     } else {
-        alert("Please Log In or Sign In to buy")
-        setTimeout(() => {
-            window.location.href = "https://santiagoslago.github.io/retroGamesStore/templates/logIn.html";
-        }, 2);
+
+        Swal.fire({
+            text: 'Please Log In or Create Account to continue',
+            icon: 'error',
+            confirmButtonText: 'Go'
+        })
+            .then((result) => {
+                result.isConfirmed ? window.location.href = "/templates/logIn.html" : null;
+            })
+
     }
 }
 
-function setButtonsValue(videogames, buttons) {
-    let counter = 0;
-    buttons.forEach(button => {
-        button.value = videogames[counter].name
-        counter++
-    });
-
-}
-
-function addItemToCart(event) {
+function addItemToCart(event, videogames) {//--> Agrega un item al carrito
 
 
     let videogameName = event.target.value
@@ -157,7 +188,7 @@ function addItemToCart(event) {
     drawItemsNumber(shoppingCartProducts(user).length)
 }
 
-function deleteCartItem(event, products) {
+function deleteCartItem(event, videogames) {//--> Elimina un item del carrito
 
     let videogameName = event.target.innerText;
     let videogame;
@@ -182,13 +213,25 @@ function deleteCartItem(event, products) {
 
 }
 
-function increaseCartAmount(product) {
+function increaseCartAmount(product) {//--> Aumenta el valor/monto del carrito
     user.shoppingCart.amount += product.price;
 }
 
-function decreaseCartAmount(product) {
+function decreaseCartAmount(product) {//--> Disminuye el valor/monto del carrito
     user.shoppingCart.amount -= product.price;
 }
+
+function logOut() {//--> Funcion de logout (por ahora solo redirecciona al log in)
+    window.location.href = "/templates/logIn.html"
+}
+
+function redirectToGameDemo(event){
+    if(event.target.value === "Snake"){
+        window.location.href = "/templates/snakeGame.html"
+    }
+}
+
+
 
 
 /////////////////////////////////////////////
@@ -197,26 +240,32 @@ function decreaseCartAmount(product) {
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 
-
 window.onload = () => {
-    drawUsernameInBanner();
-    setButtonsValue(videogames, buyBtns)
-    drawCartItems(user)
-    drawItemsNumber(shoppingCartProducts(user).length)
+drawUsernameInBanner(user);
+drawGameCards("DB/videogames.json")
+drawCartItems(user)
+drawItemsNumber(shoppingCartProducts(user).length)
 }
 
-buyBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        checkLoguedUser()
-        addItemToCart(e)
-    })
-});
-
 buyButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = "/templates/purchase.html"
+    user.shoppingCart.products.length > 0
+        ? window.location.href = "/templates/purchase.html"
+        :
+        Toastify({
+            text: "Se debe agregar al menos un elemento al carrito",
+            duration: 2000,
+            position: 'center',
+            style: {
+                background: '#8F0000',
+                border: '1px solid black',
+            }
+        }).showToast();
 })
 
+logoutButton.addEventListener('click', (e) => {
+    logOut();
+})
 
+console.log(user)
 
 

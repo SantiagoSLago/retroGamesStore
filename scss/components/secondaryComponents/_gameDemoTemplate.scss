@@ -1,0 +1,160 @@
+@import "./scss/components/secondaryComponents/buttons.scss";
+@import "./scss/utilities/colourPallete.scss";
+@import "./scss/utilities/fonts";
+@import "./scss/utilities/colourPallete";
+
+@mixin gameDemoTemplate {
+  display: flex;
+
+  .data-section {
+    background-color: nth($colors, 3);
+    width: 600px;
+    height: 55px;
+    margin-right: -100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    .data-container {
+      width: 98%;
+      height: 89%;
+      background-color: nth($colors, 2);
+      border: 1px solid black;
+      border-radius: 10px;
+      justify-self: center;
+      align-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      h1 {
+        font-family: nth($fonts, 1);
+        font-size: larger;
+        margin-top: 5px;
+        color: nth($colors, 4);
+      }
+    }
+  }
+
+  .game-scoreboard-section {
+    display: flex;
+    justify-content: space-around;
+    .player-data {
+      background-color: nth($colors, 3);
+      border: 1px solid black;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: 350px;
+      height: 200px;
+      .score-banner {
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        .player-titles {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: flex-start;
+          height: 70px;
+          .title-container{
+            background-color:rgb(5, 41, 199);
+            text-align: center;
+            border-radius: 10px;
+            border:1px solid black;
+          }
+          h4 {
+            margin-top: 5px;
+            margin-left: 4px;
+            color: nth($colors, 4);
+            font-family: nth($fonts, 1);
+            font-size: small;
+          }
+        }
+        .player-name-score {
+          background-color: nth($colors, 2);
+          height: 70px;
+          width: 150px;
+          text-align: center;
+          border: 1px solid black;
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          h4 {
+            color: nth($colors, 4);
+            font-family: nth($fonts, 1);
+            font-size: small;
+          }
+        }
+      }
+    }
+    .game-container {
+      canvas {
+        border: 1px solid black;
+        background-color: nth($colors, 2);
+      }
+    }
+    //-- Scoreboard--//
+
+    .scoreboard-container{
+      border: 1px solid black;
+      border-radius: 10px;
+      background-color: nth($colors,3);
+      height: 300px;
+      width: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .scoreboard-title-container{
+        background-color:rgb(5, 41, 199);
+        border: 1px solid black;
+        border-radius: 10px;
+        margin-top: 25px;
+        width: 160px;
+        height:45px ;
+        text-align: center;
+        h4{
+          padding-top: 15px;
+          color: nth($colors, 4);
+          font-family: nth($fonts, 1);
+          font-size: small;
+        }
+      }
+
+      .score-title-container{
+        background-color: nth($colors,2);
+        border: 1px solid black;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        height: 170px;
+        width: 95%;
+        ol{
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          color: nth($colors, 4);
+          font-family: nth($fonts, 1);
+          font-size: x-small;
+          li{
+            margin-left: 10px;
+          }
+        }
+      }
+
+      
+
+    }
+
+
+
+
+  }
+}

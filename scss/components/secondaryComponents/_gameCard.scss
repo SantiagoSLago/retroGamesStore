@@ -1,6 +1,7 @@
 @import "./scss/utilities/colourPallete.scss";
 @import "./scss/utilities/fonts.scss";
 @import "./scss/components/secondaryComponents/buttons.scss";
+@import "./scss/utilities/animations";
 
 @mixin gameCard {
  
@@ -10,6 +11,7 @@
 
   .card-container {
     border: 1px solid black;
+    margin-top: 20px;
     border-radius: 10px;
     width: 440px;
     height: 150px;
@@ -57,6 +59,7 @@
       .btn-gameCard {
         @include gameCardButton;
       }
+      @include hover-grow-small('.btn-gameCard')
     }
   }
 }

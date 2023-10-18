@@ -1,0 +1,22 @@
+//----HOVER----//
+@mixin hover-grow-small($class) {
+    #{$class} {
+      vertical-align: middle;
+      -webkit-transform: perspective(4px) translateZ(0);
+      transform: perspective(6px) translateZ(0);
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+      cursor: pointer;
+    }
+    #{$class}:hover,
+    #{$class}:focus,
+    #{$class}:active {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+  }
+
+
+  //----Animation Entrances---//

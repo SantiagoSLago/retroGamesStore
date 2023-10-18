@@ -4,6 +4,8 @@
 @import "./scss/components/secondaryComponents/forms.scss";
 @import "./scss/components/mainComponents/header.scss";
 @import "./scss/components/secondaryComponents/purchaseCard.scss";
+@import "./scss/utilities/animations";
+@import "./scss/components/secondaryComponents/gameDemoTemplate";
 
 /////////////////////////////////////////////
 /////////////////////////////////////////////
@@ -19,9 +21,9 @@ header {
   @include header;
 }
 
-a{
- color:inherit;
- text-decoration: none;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 main {
@@ -35,6 +37,7 @@ main {
   .cards-section {
     @include gameCard;
     flex-wrap: wrap;
+    overflow-y: scroll;
   }
 }
 
@@ -81,6 +84,7 @@ main {
     .form {
       @include generalForm;
     }
+    @include hover-grow-small(".btn-form");
   }
 }
 
@@ -107,13 +111,22 @@ main {
 .profile-page-main {
   @extend .purchase-page-main;
   justify-content: end;
- 
 }
 
 .profile-banner {
   @include profileBanner;
 }
 
-.profile-data-cards{
+.profile-data-cards {
   @include profileDataCards;
+}
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+/////////////Snake Game Layout//////////////
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+
+.game-main {
+@include gameDemoTemplate;
 }

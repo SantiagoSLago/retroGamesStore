@@ -1,0 +1,26 @@
+[
+    {
+        "username": "John McLane",
+        "email": "mclane@gmail.com",
+        "password":"pass11",
+        "score":0,
+        "shoppingCart":{},
+        "purchases":[]
+    },
+    {
+        "username": "James Bond",
+        "email": "007j@gmail.com",
+        "password":"pass12",
+        "score":0,
+        "shoppingCart":{},
+        "purchases":[]
+    },
+    {
+        "username": "Lenny Kravitz",
+        "email": "guitar@gmail.com",
+        "password":"pass13",
+        "score":0,
+        "shoppingCart":{},
+        "purchases":[]
+    }
+]

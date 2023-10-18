@@ -26,9 +26,16 @@ class ShoppingCart {
 
 class Purchase {
     constructor(products, amount, discount) {
-        this.products = products,
+        this.id = this.generateId(),
+            this.products = products,
             this.amount = amount,
             this.discount = discount;
+        this.dateTime = DateTime.now().toLocaleString(DateTime.DATETIME_SHORT);
+    }
+
+
+    generateId() {
+        return Math.floor(Math.random() * 10000) + 1;
     }
 }
 
@@ -39,7 +46,7 @@ class Purchase {
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 
-
+const DateTime = luxon.DateTime;
 let purchaseList = document.querySelector('.purchase-list')
 let discountList = document.querySelector('.discount-list')
 let cartAmount = document.querySelector('.cart-amount')
@@ -53,17 +60,7 @@ let purchaseFinalAmount = document.querySelector('.final-amount')
 
 
 
-
-
-
 const user = JSON.parse(localStorage.getItem("user"));
-
-let discount1 = new Discount(1, "Employee", 15);
-let discount2 = new Discount(2, "Family", 30);
-let discount3 = new Discount(3, "Student", 45);
-let discount4 = new Discount(4, "Special", 50);
-
-let discounts = [discount1, discount2, discount3, discount4];
 
 
 /////////////////////////////////////////////
@@ -74,24 +71,24 @@ let discounts = [discount1, discount2, discount3, discount4];
 
 ///Data Extraction Functions
 
-function shoppingCartProducts(user) {
-    if (user != null) {
-        let products = user.shoppingCart.products
-        return products;
-    }
+function shoppingCartProducts(user) {//--> Extrae los prouctos del carrito
+    return user != null ? user.shoppingCart.products : null;
 }
 
-function shoppingCartAmount(user) {
-    if (user != null) {
-        let amount = user.shoppingCart.amount
-        return amount;
-    }
+function shoppingCartAmount(user) {//--> Extrae que el monto del carrito
+    return user != null ? user.shoppingCart.amount : null;
 }
 
-// Drawing functions
+//Async data extraction functions
 
-function drawCartItems(user) {
+async function getAllDiscounts(discountsUrl){//--> Consulta los descuentos en la BD
+    let discounts = await fetch(discountsUrl);
+    return await discounts.json();
+}
 
+// Drawing functions //
+
+function drawCartItems(user) {//--> Dibuja los productos del carrito en la tarjeta de compra
     let products = shoppingCartProducts(user)
 
     purchaseList.innerHTML = '';
@@ -99,46 +96,46 @@ function drawCartItems(user) {
     for (const product of products) {
         purchaseList.innerHTML += `<li>${product.name}</li>`
     }
-
-
 }
 
-function drawDiscounts(discounts) {
+function drawCartAmount(amount) {//--> Dibuja el monto del carrito en el banner de compra
+    cartAmount.innerHTML = '';
+    cartAmount.innerHTML += `<p>$ ${amount}</p>`
+}
+
+function drawPurchaseBanner(user) {//--> Dibuja la compra realizada en el banner de compra
+    
+    let products = shoppingCartProducts(user)
+    
+    products.forEach(product => {
+        purchaseFinalList.innerHTML += `<li>${product.name}`
+    });
+    
+    purchaseFinalDiscount.innerHTML = `Discount Applied: ${user.shoppingCart.discount.percentage}%`
+    purchaseFinalAmount.innerHTML = `Final Amount: $ ${user.shoppingCart.amount}`
+    
+}
+
+//Async drawing functions
+
+async function drawDiscounts(discountsUrl) {//--> Dibuja los descuentos en la tarjeta de descuentos
+
+let discounts = await getAllDiscounts(discountsUrl);
+console.log(discounts)
     discountList.innerHTML = '';
 
     for (const discount of discounts) {
         discountList.innerHTML += `<div>${discount.name} ${discount.percentage}% <input type="radio"/ id="${discount.name}" value="${discount.percentage}" name="discount" class="discounts"></div>`
     }
 
-}
 
-function drawCartAmount(amount) {
-
-
-
-
-    cartAmount.innerHTML = '';
-    cartAmount.innerHTML += `<p>$ ${amount}</p>`
-}
-
-function drawPurchaseBanner(user) {
-
-    let products = user.shoppingCart.products;
-
-    products.forEach(product => {
-        purchaseFinalList.innerHTML += `<li>${product.name}`
-    });
-    console.log(user)
-
-    purchaseFinalDiscount.innerHTML = `Discount Applied: ${user.shoppingCart.discount.percentage}%`
-    purchaseFinalAmount.innerHTML = `Final Amount: $ ${user.shoppingCart.amount}`
+    applyDiscount(user,discounts)
 
 }
-
 
 //Business Logic Functions
 
-function getDiscountAmount(user, percentage) {
+function getDiscountAmount(user, percentage) {//--> Calcula y devuelve el monto a descontar basado en el porcentaje y el monto del carrito
     let amount = shoppingCartAmount(user)
     let newAmount = 0;
     let discount = (amount * percentage) / 100;
@@ -146,7 +143,7 @@ function getDiscountAmount(user, percentage) {
     return newAmount
 }
 
-function applyDiscount(user) {
+function applyDiscount(user,discounts) {//--> Aplica el descuento seleccionado al monto del carrito y ordena que se lo muestre por pantalla
     let discountsInputs = document.querySelectorAll('.discounts');
     let amount = shoppingCartAmount(user)
     let percentage = 0;
@@ -163,20 +160,19 @@ function applyDiscount(user) {
 
                 }
             });
-            console.log(user)
             drawCartAmount(getDiscountAmount(user, percentage))
         })
     });
 }
 
-function emptyShoppingCart(user) {
+function emptyShoppingCart(user) {//--> Vacia el carrito del usuario
     user.shoppingCart.products = [];
     user.shoppingCart.amount = 0;
     user.shoppingCart.discount = {}
     localStorage.setItem("user", JSON.stringify(user))
 }
 
-function addPurchasesToUser(user) {
+function addPurchasesToUser(user) {//--> Agrega una compra realizada a la lista de compras realizadas por el usuario.
     let purchase = new Purchase(user.shoppingCart.products,
         user.shoppingCart.amount,
         user.shoppingCart.discount)
@@ -184,11 +180,10 @@ function addPurchasesToUser(user) {
     localStorage.setItem("user", JSON.stringify(user))
 }
 
-function completePurchase(user) {
+function completePurchase(user) {//--> Completa la compra y redirecciona al inicio.
     let cartAmount = document.querySelector('.cart-amount').innerText
     let finalAmount = parseInt(cartAmount.replace('$', ''))
     user.shoppingCart.amount = finalAmount;
-    //console.log(user)
     purchaseDetails.classList.toggle('hidden')
     purchaseBannerTitle.classList.toggle('hidden')
 
@@ -197,11 +192,13 @@ function completePurchase(user) {
     emptyShoppingCart(user)
     setTimeout(() => {
         window.location.href = "/index.html"
-    }, 4000);
+    }, 3000);
 
 
 
 }
+
+
 
 
 /////////////////////////////////////////////
@@ -213,12 +210,12 @@ function completePurchase(user) {
 
 window.onload = () => {
     drawCartItems(user)
-    drawDiscounts(discounts)
+    drawDiscounts("/DB/discounts.json")
     drawCartAmount(shoppingCartAmount(user))
-    applyDiscount(user)
 }
 
 purchaseBtn.addEventListener('click', (e) => {
     e.preventDefault()
     completePurchase(user)
 })
+

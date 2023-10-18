@@ -1,0 +1,26 @@
+[
+    {
+        "name":"Snake",
+        "price":2300
+    },
+    {
+        "name":"Super Mario",
+        "price":1200
+    },
+    {
+        "name":"MineSeeker",
+        "price":1300
+    },
+    {
+        "name":"Space Invaders",
+        "price":580
+    },
+    {
+        "name":"Tetris",
+        "price":1050
+    },
+    {
+        "name":"Pac-Man",
+        "price":1140
+    }
+]

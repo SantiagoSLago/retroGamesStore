@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name":"Employee",
+        "percentage":15
+    },
+    {
+        "id": 2,
+        "name":"Family",
+        "percentage":30
+    },
+    {
+        "id": 3,
+        "name":"Student",
+        "percentage":45
+    },
+    {
+        "id": 4,
+        "name":"Special",
+        "percentage":50
+    }
+]

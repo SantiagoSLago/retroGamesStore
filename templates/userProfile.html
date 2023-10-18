@@ -12,17 +12,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="/css/styles.css">
     <title>Purchase</title>
 </head>
 
 <body>
-    <header class="profile-header">      
+    <header class="profile-header">
         <a href="/index.html"><i class="fa-solid fa-house home-icon"></i></a>
     </header>
     <main class="profile-page-main">
         <section class="cards-section purchase-cards-section profile-data-cards">
-            <div class="purchase-card">
+            <div class="purchase-card animate__animated animate__backInLeft">
                 <div class="purchase-card-title">
                     <h3>Personal Data</h3>
                 </div>
@@ -30,18 +32,21 @@
                     <div class="user-data">
 
                     </div>
+                    <div class="edit-user-data hidden">
+                        <label for=""></label>
+                    </div>
                 </div>
-             
+
             </div>
-            <div class="purchase-card">
+            <div class="purchase-card animate__animated animate__backInRight">
                 <div class="purchase-card-title">
                     <h3>Purchases</h3>
                 </div>
                 <div class="purchase-card-body user-purchases">
-                    
+
                 </div>
-                
-              
+
+
             </div>
         </section>
     </main>
@@ -49,7 +54,7 @@
 
 
     <script src="/JS/userProfile.js"></script>
-    <script src=""></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 
 </html>

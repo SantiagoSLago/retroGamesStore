@@ -1,0 +1,13 @@
+
+
+@mixin mq-medium-622px{
+    @media screen and (max-width: 622px) {
+        @content
+    }
+};
+
+@mixin m1-small-428px{
+@media screen and (max-width:428px){
+    @content
+}
+}

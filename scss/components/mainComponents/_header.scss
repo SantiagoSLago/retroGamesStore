@@ -1,48 +1,63 @@
 @import "./scss/utilities/colourPallete.scss";
 @import "./scss/components/secondaryComponents/buttons.scss";
+@import "./scss/utilities/animations";
 
 @mixin header {
 
 display: flex;
 justify-content: space-between;
-
 .cart-icon{
   font-size: 30px;
+  margin-left: 25px;
   cursor: pointer;
 }
+@include hover-grow-small('.cart-icon');
 
 .profile-icon{
-  margin-right: 20px;
-  margin-top: 15px;
+  
   font-size: 30px;
   cursor: pointer;
 }
+@include hover-grow-small('.profile-icon');
 
 .home-icon{
   @extend .cart-icon;
   margin-left: 20px;
+  margin-top: 10px;
 }
 
   .header-icon-container {
+
+
   
-    width: 80px;
+    width: 150px;
     margin-left: 60px;
     margin-top: 20px;
 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 
 
 
     .btn-shopping-items {
         @include shoppingItemButon;
+        margin-right: 35px
     }
+    
+
   }
 
 
   .btn-offcanvas-buy{
     @include btnOffcanvasBuy;
   }
+  @include hover-grow-small('.btn-offcanvas-buy');
+
+  .btn-logout{
+    margin-right: 20px;
+    margin-top: 30px;
+  }
+  @include hover-grow-small('.btn-logout');
 
 }

@@ -1,5 +1,6 @@
 @import "./scss/utilities/colourPallete.scss";
 @import "./scss/utilities/fonts.scss";
+@import "./scss/utilities/mediaQuery";
 
 
 @mixin welcomeBanner{
@@ -45,6 +46,10 @@
         margin: 0%;
         font-family: nth($fonts, 1);
       }
+    }
+
+    @include mq-medium-622px{
+      text-align: center;
     }
   }
 
