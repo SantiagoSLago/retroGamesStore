@@ -210,7 +210,7 @@ function completePurchase(user) {//--> Completa la compra y redirecciona al inic
 
 window.onload = () => {
     drawCartItems(user)
-    drawDiscounts("/DB/discounts.json")
+    drawDiscounts("../DB/discounts.json")
     drawCartAmount(shoppingCartAmount(user))
 }
 
