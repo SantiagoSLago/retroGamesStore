@@ -167,7 +167,7 @@ function saveUserinDatabase(user) {//--> Recibe un usuario y lo guarda en la dat
             confirmButtonText: 'Go'
         })
             .then((result) => {
-                result.isConfirmed ? window.location.href = "/index.html" : null;
+                result.isConfirmed ? window.location.href = "../index.html" : null;
                 // window.location.href = "https://santiagoslago.github.io/retroGamesStore/index.html"
 
             })
@@ -202,7 +202,7 @@ async function logIn() {//--Funcion de Log In
                 confirmButtonText: 'Go'
             })
                 .then((result) => {
-                   result.isConfirmed ? window.location.href = "/index.html" : null;
+                   result.isConfirmed ? window.location.href = "../index.html" : null;
                     //window.location.href = "https://santiagoslago.github.io/retroGamesStore/index.html"
                 })
         } else if (await checkDataBase(data, usersUrl) != null) {
