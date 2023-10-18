@@ -51,6 +51,8 @@ let usernameSign = document.getElementById('usernameSign');
 let emailSign = document.getElementById('emailSign');
 let password1Sign = document.getElementById('password1Sign');
 let password2Sign = document.getElementById('password2Sign');
+let passwordInput = document.querySelectorAll('.password');
+let watchPasswordIcon = document.querySelectorAll('.watch-password');
 
 
 /////////////////////////////////////////////
@@ -263,6 +265,20 @@ btnLogIn.addEventListener("click", (e) => {
     e.preventDefault()
     logIn()
 })
+
+//Watch Password
+watchPasswordIcon.forEach(icon => {
+    icon.addEventListener('click', () => {
+        passwordInput.forEach(input => {
+            if (input.type === "password") {
+                input.type = "text";
+            } else if (input.type === "text") {
+                input.type = "password"
+            }
+        });
+
+    })
+});
 
 
 

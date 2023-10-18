@@ -20,8 +20,25 @@
     border: 1px solid black;
     background-color: nth($colors,2 );
     border-radius: 8px;
-
     color:nth($colors,4 )
+  }
+
+  .password-container {
+    background-color: nth($colors , 2 );
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 188px;
+    display: flex;
+    align-items: center;
+    input {
+      border: none;
+    }
+    .watch-password{
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+
   }
 
   .btn-form {
