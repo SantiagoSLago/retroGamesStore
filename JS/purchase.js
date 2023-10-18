@@ -191,7 +191,7 @@ function completePurchase(user) {//--> Completa la compra y redirecciona al inic
     addPurchasesToUser(user)
     emptyShoppingCart(user)
     setTimeout(() => {
-        window.location.href = "/index.html"
+        window.location.href = "../index.html"
     }, 3000);
 
 
