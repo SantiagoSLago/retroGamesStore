@@ -167,7 +167,7 @@ function checkLoguedUser() {//--> Chequea si el usuario esta logueado o no
             confirmButtonText: 'Go'
         })
             .then((result) => {
-                result.isConfirmed ? window.location.href = "/templates/logIn.html" : null;
+                result.isConfirmed ? window.location.href = "./templates/logIn.html" : null;
             })
 
     }
@@ -227,7 +227,7 @@ function logOut() {//--> Funcion de logout (por ahora solo redirecciona al log i
 
 function redirectToGameDemo(event){
     if(event.target.value === "Snake"){
-        window.location.href = "../templates/snakeGame.html"
+        window.location.href = "./templates/snakeGame.html"
     }
 }
 
@@ -249,7 +249,7 @@ drawItemsNumber(shoppingCartProducts(user).length)
 
 buyButton.addEventListener('click', (e) => {
     user.shoppingCart.products.length > 0
-        ? window.location.href = "/templates/purchase.html"
+        ? window.location.href = "./templates/purchase.html"
         :
         Toastify({
             text: "Se debe agregar al menos un elemento al carrito",
